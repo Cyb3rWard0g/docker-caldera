@@ -1,0 +1,20 @@
+version: '3.5'
+
+services:
+  docker-caldera:
+    image: cyb3rward0g/docker-caldera:0.0.1
+    container_name: docker-caldera
+    restart: always
+    environment:
+      CALDERA_ADMIN_NAME: ${CALDERA_ADMIN_NAME}
+      CALDERA_ADMIN_PASSWORD: ${CALDERA_ADMIN_PASSWORD}
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8888:8888"
+    networks:
+      caldera:
+
+networks:
+  caldera:
+    driver: bridge
