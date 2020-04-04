@@ -98,7 +98,7 @@ if [[ -z "$CALDERA_RED_USER_NAME" ]]; then
 fi
 echo "Setting Caldera red admin user to $CALDERA_RED_USER_NAME"
 
-if [[ -z "$CALDERA_RED_ADMIN_PASSWORD" ]]; then
+if [[ -z "$CALDERA_RED_USER_PASSWORD" ]]; then
   CALDERA_RED_USER_PASSWORD=adminpwd
 fi
 echo "Setting Caldera red admin password to $CALDERA_RED_USER_PASSWORD"
