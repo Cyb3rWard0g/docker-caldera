@@ -79,7 +79,7 @@ fi
 echo "Setting Caldera blue admin user to $CALDERA_BLUE_USER_NAME"
 
 if [[ -z "$CALDERA_BLUE_USER_PASSWORD" ]]; then
-  CALDERA_BLUE_USER_PASSWORD=adminpwd
+  CALDERA_BLUE_USER_PASSWORD=bluepassword
 fi
 echo "Setting Caldera blue admin password to $CALDERA_BLUE_USER_PASSWORD"
 
@@ -89,7 +89,7 @@ fi
 echo "Setting Caldera red admin user to $CALDERA_RED_ADMIN_NAME"
 
 if [[ -z "$CALDERA_RED_ADMIN_PASSWORD" ]]; then
-  CALDERA_RED_ADMIN_PASSWORD=adminpwd
+  CALDERA_RED_ADMIN_PASSWORD=toor
 fi
 echo "Setting Caldera red admin password to $CALDERA_RED_ADMIN_PASSWORD"
 
@@ -99,7 +99,7 @@ fi
 echo "Setting Caldera red admin user to $CALDERA_RED_USER_NAME"
 
 if [[ -z "$CALDERA_RED_USER_PASSWORD" ]]; then
-  CALDERA_RED_USER_PASSWORD=adminpwd
+  CALDERA_RED_USER_PASSWORD=redpassword
 fi
 echo "Setting Caldera red admin password to $CALDERA_RED_USER_PASSWORD"
 
