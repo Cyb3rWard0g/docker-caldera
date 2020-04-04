@@ -27,4 +27,5 @@ users:
   blue:
     blue: admin
   red:
+    admin: admin
     red: admin
