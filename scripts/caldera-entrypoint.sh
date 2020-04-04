@@ -76,22 +76,22 @@ echo "Setting Caldera reports directory to $CALDERA_REPORTS_DIR"
 if [[ -z "$CALDERA_BLUE_ADMIN_NAME" ]]; then
   CALDERA_BLUE_ADMIN_NAME=admin
 fi
-echo "Setting Caldera blue admin user to $CALDERA_ADMIN_NAME"
+echo "Setting Caldera blue admin user to $CALDERA_BLUE_ADMIN_NAME"
 
 if [[ -z "$CALDERA_BLUE_ADMIN_PASSWORD" ]]; then
   CALDERA_BLUE_ADMIN_PASSWORD=adminpwd
 fi
-echo "Setting Caldera blue admin password to $CALDERA_ADMIN_PASSWORD"
+echo "Setting Caldera blue admin password to $CALDERA_BLUE_ADMIN_PASSWORD"
 
 if [[ -z "$CALDERA_RED_ADMIN_NAME" ]]; then
   CALDERA_RED_ADMIN_NAME=admin
 fi
-echo "Setting Caldera red admin user to $CALDERA_ADMIN_NAME"
+echo "Setting Caldera red admin user to $CALDERA_RED_ADMIN_NAME"
 
 if [[ -z "$CALDERA_RED_ADMIN_PASSWORD" ]]; then
   CALDERA_RED_ADMIN_PASSWORD=adminpwd
 fi
-echo "Setting Caldera red admin password to $CALDERA_ADMIN_PASSWORD"
+echo "Setting Caldera red admin password to $CALDERA_RED_ADMIN_PASSWORD"
 
 echo "Updating properties of the caldera local conf file .."
 sed -i "s/^api_key_blue\:.*$/api_key_blue\: ${CALDERA_API_KEY_BLUE}/g" ${CALDERA_HOME}/conf/local.yml
@@ -106,8 +106,8 @@ sed -i "s/^crypt_salt\:.*$/crypt_salt\: ${CALDERA_CRYPT_SALT}/g" ${CALDERA_HOME}
 sed -i "s/^exfil_dir\:.*$/exfil_dir\: \\${CALDERA_EXFIL_DIR}/g" ${CALDERA_HOME}/conf/local.yml
 sed -i "s/^port\:.*$/port\: ${CALDERA_PORT}/g" ${CALDERA_HOME}/conf/local.yml
 sed -i "s/^reports_dir\:.*$/reports_dir\: \\${CALDERA_REPORTS_DIR}/g" ${CALDERA_HOME}/conf/local.yml
-sed -i "s/    blue\: admin/  ${CALDERA_BLUE_ADMIN_NAME}\: ${CALDERA_BLUE_ADMIN_PASSWORD}/g" ${CALDERA_HOME}/conf/local.yml
-sed -i "s/    red\: admin/  ${CALDERA_RED_ADMIN_NAME}\: ${CALDERA_RED_ADMIN_PASSWORD}/g" ${CALDERA_HOME}/conf/local.yml
+sed -i "s/    blue\: admin/   ${CALDERA_BLUE_ADMIN_NAME}\: ${CALDERA_BLUE_ADMIN_PASSWORD}/g" ${CALDERA_HOME}/conf/local.yml
+sed -i "s/    red\: admin/    ${CALDERA_RED_ADMIN_NAME}\: ${CALDERA_RED_ADMIN_PASSWORD}/g" ${CALDERA_HOME}/conf/local.yml
 
 echo "Final local conf file .."
 cat ${CALDERA_HOME}/conf/local.yml
