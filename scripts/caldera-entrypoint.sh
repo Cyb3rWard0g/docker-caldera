@@ -28,7 +28,7 @@ fi
 
 if [[ -z "$CALDERA_ENCRYPTION_KEY" ]]; then
   CALDERA_ENCRYPTION_KEY=$(cat /proc/sys/kernel/random/uuid)
-  echo "[+] Setting Caldera encryption key to $CALDERA_ENCRYPTION_KEY"
+  echo "[+] Updating default Caldera encryption key to $CALDERA_ENCRYPTION_KEY"
   sed -i "s/^encryption_key\: ADMIN123/encryption_key\: ${CALDERA_ENCRYPTION_KEY}/g" ${CALDERA_HOME}/conf/local.yml
 else
   echo "[+] Setting Caldera encryption key to $CALDERA_ENCRYPTION_KEY"
@@ -37,7 +37,7 @@ fi
 
 if [[ -z "$CALDERA_APP_CONTACT_GIST" ]]; then
   CALDERA_APP_CONTACT_GIST=$(cat /proc/sys/kernel/random/uuid)
-  echo "[+] Setting Caldera app contact gist API key to $CALDERA_APP_CONTACT_GIST"
+  echo "[+] Updating default Caldera app contact gist API key to $CALDERA_APP_CONTACT_GIST"
   sed -i "s/^app.contact.gist\: API_KEY/app.contact.gist\: ${CALDERA_APP_CONTACT_GIST}/g" ${CALDERA_HOME}/conf/local.yml
 else
   echo "[+] Setting Caldera app contact gist API key to $CALDERA_APP_CONTACT_GIST"
