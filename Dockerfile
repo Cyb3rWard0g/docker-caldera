@@ -60,11 +60,6 @@ USER root
 RUN chmod +x ${CALDERA_HOME}/caldera-entrypoint.sh \
   && chown -R ${USER} ${CALDERA_HOME} ${HOME}
 
-EXPOSE 8888
-EXPOSE 7010/tcp
-EXPOSE 7011/udp
-EXPOSE 7012
-
 WORKDIR ${CALDERA_HOME}
 ENTRYPOINT ["./caldera-entrypoint.sh"]
 CMD ["python3", "server.py"]

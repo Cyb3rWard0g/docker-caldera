@@ -7,6 +7,9 @@ services:
     restart: always
     ports:
       - "8888:8888"
+      - "7010:7010/tcp"
+      - "7010:7010/udp"
+      - "7012:7012"
     networks:
       caldera:
 
