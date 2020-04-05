@@ -15,16 +15,17 @@ ARG CALDERA_USER=caldera
 ARG CALDERA_UID=510
 ARG CALDERA_GID=510
 ARG CALDERA_HOME=/usr/src/app
-ENV PATH "$HOME/.local/bin:$PATH"
 
 ENV DEBIAN_FRONTEND noninteractive
+ENV GOPATH=/usr/bin/go
+
 # ********** Caldera User ******
 ENV USER ${CALDERA_USER}
 ENV CALDERA_UID ${CALDERA_UID}
 ENV HOME /home/${CALDERA_USER}
 ENV CALDERA_GID $CALDERA_GID
 ENV CALDERA_HOME ${CALDERA_HOME}
-ENV GOPATH=/usr/bin/go
+ENV PATH ${HOME}/.local/bin:$PATH
 
 # *********** Installing Prerequisites ***************
 # -qq : No output except for errors
