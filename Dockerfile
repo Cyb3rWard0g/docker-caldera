@@ -15,6 +15,7 @@ ARG CALDERA_USER=caldera
 ARG CALDERA_UID=510
 ARG CALDERA_GID=510
 ARG CALDERA_HOME=/usr/src/app
+ENV PATH "$HOME/.local/bin:$PATH"
 
 ENV DEBIAN_FRONTEND noninteractive
 # ********** Caldera User ******
