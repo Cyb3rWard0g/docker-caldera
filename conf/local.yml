@@ -11,11 +11,9 @@ crypt_salt: REPLACE_WITH_RANDOM_VALUE
 exfil_dir: /tmp
 plugins:
 - sandcat
-- mock
 - stockpile
 - response
 - compass
-- ssl
 - atomic
 - gameboard
 - training
