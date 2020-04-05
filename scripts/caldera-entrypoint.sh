@@ -113,9 +113,9 @@ sed -i "s/^app.contact.tcp\: 127.0.0.1\:.*$/app.contact.tcp\: 127.0.0.1\:${CALDE
 sed -i "s/^app.contact.udp: 127.0.0.1\:.*$/app.contact.udp: 127.0.0.1\:${CALDERA_UDP_PORT}/g" ${CALDERA_HOME}/conf/local.yml
 sed -i "s/^app.contact.websocket: 127.0.0.1\:.*$/app.contact.websocket: 127.0.0.1\:${CALDERA_WEBSOCKET_PORT}/g" ${CALDERA_HOME}/conf/local.yml
 sed -i "s/^crypt_salt\:.*$/crypt_salt\: ${CALDERA_CRYPT_SALT}/g" ${CALDERA_HOME}/conf/local.yml
-sed -i "s/^exfil_dir\:.*$/exfil_dir\: \\${CALDERA_EXFIL_DIR}/g" ${CALDERA_HOME}/conf/local.yml
+sed -i "s|^exfil_dir\:.*$|exfil_dir\: ${CALDERA_EXFIL_DIR}|g" ${CALDERA_HOME}/conf/local.yml
 sed -i "s/^port\:.*$/port\: ${CALDERA_PORT}/g" ${CALDERA_HOME}/conf/local.yml
-sed -i "s/^reports_dir\:.*$/reports_dir\: \\${CALDERA_REPORTS_DIR}/g" ${CALDERA_HOME}/conf/local.yml
+sed -i "s|^reports_dir\:.*$|reports_dir\: ${CALDERA_REPORTS_DIR}|g" ${CALDERA_HOME}/conf/local.yml
 sed -i "s/    blue\: admin/   ${CALDERA_BLUE_USER_NAME}\: ${CALDERA_BLUE_USER_PASSWORD}/g" ${CALDERA_HOME}/conf/local.yml
 sed -i "s/    admin\: admin/    ${CALDERA_RED_ADMIN_NAME}\: ${CALDERA_RED_ADMIN_PASSWORD}/g" ${CALDERA_HOME}/conf/local.yml
 sed -i "s/    red\: admin/    ${CALDERA_RED_USER_NAME}\: ${CALDERA_RED_USER_PASSWORD}/g" ${CALDERA_HOME}/conf/local.yml

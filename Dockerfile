@@ -42,12 +42,13 @@ RUN apt-get update && apt-get install -qqy --no-install-recommends \
   && sed -i.bak -e 's/^%sudo/#%sudo/' /etc/sudoers \
   && groupadd -g ${CALDERA_GID} ${CALDERA_USER} \
   && useradd -m -s /bin/bash -u ${CALDERA_UID} -g ${CALDERA_GID} ${CALDERA_USER} \
-  && chown -R ${USER} /usr/src
+  # Clone Caldera Repository
+  && git clone --recursive https://github.com/mitre/caldera.git ${CALDERA_HOME} \
+  && chown -R ${USER} ${CALDERA_HOME}
 
 USER ${USER}
 
-RUN git clone --recursive https://github.com/mitre/caldera.git ${CALDERA_HOME} \
-  && cd ${CALDERA_HOME} \
+RUN cd ${CALDERA_HOME} \
   && pip3 install wheel \
   && pip3 install --no-cache-dir -r requirements.txt
 
