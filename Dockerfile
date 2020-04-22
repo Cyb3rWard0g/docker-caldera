@@ -43,7 +43,7 @@ RUN apt-get update && apt-get install -qqy --no-install-recommends \
   && groupadd -g ${CALDERA_GID} ${CALDERA_USER} \
   && useradd -m -s /bin/bash -u ${CALDERA_UID} -g ${CALDERA_GID} ${CALDERA_USER} \
   # Clone Caldera Repository
-  && git clone --recursive https://github.com/mitre/caldera.git ${CALDERA_HOME} \
+  && git clone --recursive --branch 2.6.6 https://github.com/mitre/caldera.git ${CALDERA_HOME} \
   && chown -R ${USER} ${CALDERA_HOME}
 
 USER ${USER}

@@ -8,40 +8,13 @@ CALDERA_HOME=/usr/src/app
 
 # *********** Configuring Caldera **************
 echo "Processing Caldera environment variables.."
-if [[ -z "$CALDERA_API_KEY_BLUE" ]]; then
-  CALDERA_API_KEY_BLUE=$(cat /proc/sys/kernel/random/uuid)
-  echo "[+] Updating default Caldera API key blue to $CALDERA_API_KEY_BLUE"
-  sed -i "s/^api_key_blue\: BLUEADMIN123/api_key_blue\: ${CALDERA_API_KEY_BLUE}/g" ${CALDERA_HOME}/conf/local.yml
+if [[ -z "$CALDERA_API_KEY" ]]; then
+  CALDERA_API_KEY=$(cat /proc/sys/kernel/random/uuid)
+  echo "[+] Updating default Caldera API key blue to $CALDERA_API_KEY"
+  sed -i "s/^api_key_blue\: BLUEADMIN123/api_key_blue\: ${CALDERA_API_KEY}/g" ${CALDERA_HOME}/conf/local.yml
 else
-  echo "[+] Setting Caldera API key blue to $CALDERA_API_KEY_BLUE"
-  sed -i "s/^api_key_blue\:.*$/api_key_blue\: ${CALDERA_API_KEY_BLUE}/g" ${CALDERA_HOME}/conf/local.yml
-fi
-
-if [[ -z "$CALDERA_API_KEY_RED" ]]; then
-  CALDERA_API_KEY_RED=$(cat /proc/sys/kernel/random/uuid)
-  echo "[+] Updating default Caldera API key red to $CALDERA_API_KEY_RED"
-  sed -i "s/^api_key_red\: ADMIN123/api_key_red\: ${CALDERA_API_KEY_RED}/g" ${CALDERA_HOME}/conf/local.yml
-else
-  echo "[+] Setting Caldera API key red to $CALDERA_API_KEY_RED"
-  sed -i "s/^api_key_red\:.*$/api_key_red\: ${CALDERA_API_KEY_RED}/g" ${CALDERA_HOME}/conf/local.yml
-fi
-
-if [[ -z "$CALDERA_ENCRYPTION_KEY" ]]; then
-  CALDERA_ENCRYPTION_KEY=$(cat /proc/sys/kernel/random/uuid)
-  echo "[+] Updating default Caldera encryption key to $CALDERA_ENCRYPTION_KEY"
-  sed -i "s/^encryption_key\: ADMIN123/encryption_key\: ${CALDERA_ENCRYPTION_KEY}/g" ${CALDERA_HOME}/conf/local.yml
-else
-  echo "[+] Setting Caldera encryption key to $CALDERA_ENCRYPTION_KEY"
-  sed -i "s/^encryption_key\:.*$/encryption_key\: ${CALDERA_ENCRYPTION_KEY}/g" ${CALDERA_HOME}/conf/local.yml
-fi
-
-if [[ -z "$CALDERA_APP_CONTACT_GIST" ]]; then
-  CALDERA_APP_CONTACT_GIST=$(cat /proc/sys/kernel/random/uuid)
-  echo "[+] Updating default Caldera app contact gist API key to $CALDERA_APP_CONTACT_GIST"
-  sed -i "s/^app.contact.gist\: API_KEY/app.contact.gist\: ${CALDERA_APP_CONTACT_GIST}/g" ${CALDERA_HOME}/conf/local.yml
-else
-  echo "[+] Setting Caldera app contact gist API key to $CALDERA_APP_CONTACT_GIST"
-  sed -i "s/^app.contact.gist\:.*$/app.contact.gist\: ${CALDERA_APP_CONTACT_GIST}/g" ${CALDERA_HOME}/conf/local.yml
+  echo "[+] Setting Caldera API key blue to $CALDERA_API_KEY"
+  sed -i "s/^api_key_blue\:.*$/api_key_blue\: ${CALDERA_API_KEY}/g" ${CALDERA_HOME}/conf/local.yml
 fi
 
 if [[ "$CALDERA_IP" ]]; then
