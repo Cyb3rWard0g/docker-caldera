@@ -11,7 +11,7 @@ echo "Processing Caldera environment variables.."
 if [[ -z "$CALDERA_API_KEY" ]]; then
   CALDERA_API_KEY=$(cat /proc/sys/kernel/random/uuid)
   echo "[+] Updating default Caldera API key blue to $CALDERA_API_KEY"
-  sed -i "s/^api_key\: BLUEADMIN123/api_key\: ${CALDERA_API_KEY}/g" ${CALDERA_HOME}/conf/local.yml
+  sed -i "s/^api_key\: ADMIN123/api_key\: ${CALDERA_API_KEY}/g" ${CALDERA_HOME}/conf/local.yml
 else
   echo "[+] Setting Caldera API key blue to $CALDERA_API_KEY"
   sed -i "s/^api_key\:.*$/api_key\: ${CALDERA_API_KEY}/g" ${CALDERA_HOME}/conf/local.yml
