@@ -4,7 +4,7 @@
 # Referneces:
 # https://github.com/mitre-attack/attack-arsenal/tree/master/adversary_emulation/APT29
 
-FROM cyb3rward0g/docker-caldera:2.6.6-branch-042120
+FROM cyb3rward0g/docker-caldera:2.6.6
 LABEL maintainer="Roberto Rodriguez @Cyb3rWard0g"
 LABEL description="Dockerfile Mordor Caldera Evals"
 
