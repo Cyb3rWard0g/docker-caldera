@@ -29,8 +29,9 @@ ENV PATH ${HOME}/.local/bin:$PATH
 
 # *********** Installing Prerequisites ***************
 # -qq : No output except for errors
-RUN apt-get update && apt-get install -qqy --no-install-recommends \
-  wget sudo nano git python3-pip python3-setuptools golang \
+RUN add-apt-repository ppa:longsleep/golang-backports \
+  && apt-get update && apt-get install -qqy --no-install-recommends \
+  wget sudo nano git python3-pip python3-setuptools python3-dev build-essential golang-go \
   && apt-get update \
   && apt-get -qy clean \
   autoremove \
@@ -44,6 +45,7 @@ RUN apt-get update && apt-get install -qqy --no-install-recommends \
   && useradd -m -s /bin/bash -u ${CALDERA_UID} -g ${CALDERA_GID} ${CALDERA_USER} \
   # Clone Caldera Repository
   && git clone --recursive https://github.com/mitre/caldera.git ${CALDERA_HOME} \
+  && cd ${CALDERA_HOME} && git submodule update --recursive --remote \
   && chown -R ${USER} ${CALDERA_HOME}
 
 USER ${USER}

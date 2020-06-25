@@ -8,6 +8,11 @@ CALDERA_HOME=/usr/src/app
 
 # *********** Configuring Caldera **************
 echo "Processing Caldera environment variables.."
+if [[ "$CALDERA_ABILITY_REFRESH" ]]; then
+  echo "[+] Setting Caldera ability refresh to $CALDERA_ABILITY_REFRESH"
+  sed -i "s/^ability_refresh\:.*$/ability_refresh\: ${CALDERA_ABILITY_REFRESH}/g" ${CALDERA_HOME}/conf/local.yml
+fi
+
 if [[ -z "$CALDERA_API_KEY_BLUE" ]]; then
   CALDERA_API_KEY_BLUE=$(cat /proc/sys/kernel/random/uuid)
   echo "[+] Updating default Caldera API key blue to $CALDERA_API_KEY_BLUE"
@@ -46,9 +51,9 @@ fi
 
 if [[ "$CALDERA_IP" ]]; then
   echo "[+] Setting Caldera IP to $CALDERA_IP"
-  sed -i "s/127.0.0.1/${CALDERA_IP}|g" ${CALDERA_HOME}/conf/local.yml
+  sed -i "s/0.0.0.0/${CALDERA_IP}|g" ${CALDERA_HOME}/conf/local.yml
 else
-  CALDERA_IP=127.0.0.1
+  CALDERA_IP=0.0.0.0
 fi
 
 if [[ "$CALDERA_HTTP_PORT" ]]; then
