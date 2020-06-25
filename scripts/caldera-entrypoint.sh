@@ -51,7 +51,7 @@ fi
 
 if [[ "$CALDERA_IP" ]]; then
   echo "[+] Setting Caldera IP to $CALDERA_IP"
-  sed -i "s/0.0.0.0/${CALDERA_IP}|g" ${CALDERA_HOME}/conf/local.yml
+  sed -i "s/0.0.0.0/${CALDERA_IP}/g" ${CALDERA_HOME}/conf/local.yml
 else
   CALDERA_IP=0.0.0.0
 fi
