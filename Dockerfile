@@ -4,7 +4,7 @@
 # Referneces:
 # https://github.com/mitre/caldera
 
-FROM phusion/baseimage:0.11
+FROM phusion/baseimage:bionic-1.0.0
 LABEL maintainer="Roberto Rodriguez @Cyb3rWard0g"
 LABEL description="Dockerfile Caldera.."
 
@@ -64,6 +64,7 @@ RUN chmod +x ${CALDERA_HOME}/caldera-entrypoint.sh \
 
 WORKDIR ${CALDERA_HOME}
 ENTRYPOINT ["./caldera-entrypoint.sh"]
+
 CMD ["python3", "server.py"]
 
 USER ${USER}

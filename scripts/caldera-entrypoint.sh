@@ -49,31 +49,52 @@ else
   sed -i "s/^app.contact.gist\:.*$/app.contact.gist\: ${CALDERA_APP_CONTACT_GIST}/g" ${CALDERA_HOME}/conf/local.yml
 fi
 
-if [[ "$CALDERA_IP" ]]; then
-  echo "[+] Setting Caldera IP to $CALDERA_IP"
-  sed -i "s/0.0.0.0/${CALDERA_IP}/g" ${CALDERA_HOME}/conf/local.yml
+if [[ "$CALDERA_HTTP_IP" ]]; then
+  echo "[+] Setting Caldera HTTP IP to $CALDERA_HTTP_IP"
+  sed -i "s|^app.contact.http\: http\://.*\:|app.contact.http\: http\://${CALDERA_HTTP_IP}\:|g" ${CALDERA_HOME}/conf/local.yml
 else
-  CALDERA_IP=0.0.0.0
+  CALDERA_HTPP_IP=0.0.0.0
 fi
 
 if [[ "$CALDERA_HTTP_PORT" ]]; then
   echo "[+] Setting Caldera HTTP port to $CALDERA_HTTP_PORT"
-  sed -i "s|^app.contact.http\: http\://${CALDERA_IP}\:.*$|app.contact.http\: http\://${CALDERA_IP}\:${CALDERA_HTTP_PORT}|g" ${CALDERA_HOME}/conf/local.yml
+  sed -i "s|^app.contact.http\: http\://${CALDERA_HTTP_IP}\:.*$|app.contact.http\: http\://${CALDERA_HTTP_IP}\:${CALDERA_HTTP_PORT}|g" ${CALDERA_HOME}/conf/local.yml
+fi
+
+if [[ "$CALDERA_TCP_IP" ]]; then
+  echo "[+] Setting Caldera TCP IP to $CALDERA_TCP_IP"
+  sed -i "s/^app.contact.tcp\:.*\:/app.contact.tcp\: ${CALDERA_TCP_IP}\:/g" ${CALDERA_HOME}/conf/local.yml
+else
+  CALDERA_TCP_IP=0.0.0.0
 fi
 
 if [[ "$CALDERA_TCP_PORT" ]]; then
   echo "[+] Setting Caldera TCP port to $CALDERA_TCP_PORT"
-  sed -i "s/^app.contact.tcp\: ${CALDERA_IP}\:.*$/app.contact.tcp\: ${CALDERA_IP}\:${CALDERA_TCP_PORT}/g" ${CALDERA_HOME}/conf/local.yml
+  sed -i "s/^app.contact.tcp\: ${CALDERA_TCP_IP}\:.*$/app.contact.tcp\: ${CALDERA_TCP_IP}\:${CALDERA_TCP_PORT}/g" ${CALDERA_HOME}/conf/local.yml
+fi
+
+if [[ "$CALDERA_UDP_IP" ]]; then
+  echo "[+] Setting Caldera UDP IP to $CALDERA_UDP_IP"
+  sed -i "s/^app.contact.udp\:.*\:/app.contact.udp\: ${CALDERA_UDP_IP}\:/g" ${CALDERA_HOME}/conf/local.yml
+else
+  CALDERA_UDP_IP=0.0.0.0
 fi
 
 if [[ "$CALDERA_UDP_PORT" ]]; then
   echo "[+] Setting Caldera UDP port to $CALDERA_UDP_PORT"
-  sed -i "s/^app.contact.udp: ${CALDERA_IP}\:.*$/app.contact.udp: ${CALDERA_IP}\:${CALDERA_UDP_PORT}/g" ${CALDERA_HOME}/conf/local.yml
+  sed -i "s/^app.contact.udp: ${CALDERA_UDP_IP}\:.*$/app.contact.udp: ${CALDERA_UDP_IP}\:${CALDERA_UDP_PORT}/g" ${CALDERA_HOME}/conf/local.yml
+fi
+
+if [[ "$CALDERA_WEBSOCKET_IP" ]]; then
+  echo "[+] Setting Caldera websocket IP to $CALDERA_WEBSOCKET_IP"
+  sed -i "s/^app.contact.websocket\:.*\:/app.contact.websocket\: ${CALDERA_WEBSOCKET_IP}\:/g" ${CALDERA_HOME}/conf/local.yml
+else
+  CALDERA_WEBSOCKET_IP=0.0.0.0
 fi
 
 if [[ "$CALDERA_WEBSOCKET_PORT" ]]; then
   echo "[+] Setting Caldera Websocket port to $CALDERA_WEBSOCKET_PORT"
-  sed -i "s/^app.contact.websocket: ${CALDERA_IP}\:.*$/app.contact.websocket: ${CALDERA_IP}\:${CALDERA_WEBSOCKET_PORT}/g" ${CALDERA_HOME}/conf/local.yml
+  sed -i "s/^app.contact.websocket: ${CALDERA_WEBSOCKET_IP}\:.*$/app.contact.websocket: ${CALDERA_WEBSOCKET_IP}\:${CALDERA_WEBSOCKET_PORT}/g" ${CALDERA_HOME}/conf/local.yml
 fi
 
 if [[ -z "$CALDERA_CRYPT_SALT" ]]; then
@@ -86,6 +107,13 @@ sed -i "s/^crypt_salt\:.*$/crypt_salt\: ${CALDERA_CRYPT_SALT}/g" ${CALDERA_HOME}
 if [[ "$CALDERA_EXFIL_DIR" ]]; then
   echo "[+] Setting Caldera exfil directory to $CALDERA_EXFIL_DIR"
   sed -i "s|^exfil_dir\:.*$|exfil_dir\: ${CALDERA_EXFIL_DIR}|g" ${CALDERA_HOME}/conf/local.yml
+fi
+
+if [[ "$CALDERA_HOST_IP" ]]; then
+  echo "[+] Setting Caldera host IP to $CALDERA_HOST_IP"
+  sed -i "s/^host\:.*\:/host\: ${CALDERA_HOST_IP}\:/g" ${CALDERA_HOME}/conf/local.yml
+else
+  CALDERA_HOST_IP=0.0.0.0
 fi
 
 if [[ "$CALDERA_PORT" ]]; then
